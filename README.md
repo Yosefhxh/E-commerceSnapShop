@@ -20,11 +20,11 @@ E-CommerceStore incluye:
 
 Esta galeria esta preparada para mostrar las vistas principales de la app con un formato tipo portafolio.
 
-### Preview actual
-
-![Preview actual](docs/screenshots/app-current.png)
-
 ### Vistas principales
+
+| Onboarding | Login |
+| --- | --- |
+| ![Onboarding](docs/screenshots/onboarding.png) | ![Login](docs/screenshots/login.png) |
 
 | Home | Categories |
 | --- | --- |
@@ -41,10 +41,6 @@ Esta galeria esta preparada para mostrar las vistas principales de la app con un
 | Add Address | My Account |
 | --- | --- |
 | ![Add Address](docs/screenshots/add-address.png) | ![My Account](docs/screenshots/my-account.png) |
-
-| Onboarding | Login |
-| --- | --- |
-| ![Onboarding](docs/screenshots/onboarding.png) | ![Login](docs/screenshots/login.png) |
 
 ### Como agregar tus vistas
 
