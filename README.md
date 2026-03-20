@@ -24,23 +24,23 @@ Esta galeria esta preparada para mostrar las vistas principales de la app con un
 
 | Onboarding | Login |
 | --- | --- |
-| ![Onboarding](docs/screenshots/onboarding.png) | ![Login](docs/screenshots/login.png) |
+| <img src="docs/screenshots/onboarding.png" alt="Onboarding" width="280" height="560" /> | <img src="docs/screenshots/login.png" alt="Login" width="280" height="560" /> |
 
 | Home | Categories |
 | --- | --- |
-| ![Home](docs/screenshots/home.png) | ![Categories](docs/screenshots/categories.png) |
+| <img src="docs/screenshots/home.png" alt="Home" width="280" height="560" /> | <img src="docs/screenshots/categories.png" alt="Categories" width="280" height="560" /> |
 
 | Product Detail | Wishlist |
 | --- | --- |
-| ![Product Detail](docs/screenshots/product-details.png) | ![Wishlist](docs/screenshots/wishlist.png) |
+| <img src="docs/screenshots/product-details.png" alt="Product Detail" width="280" height="560" /> | <img src="docs/screenshots/wishlist.png" alt="Wishlist" width="280" height="560" /> |
 
 | Bag | Checkout |
 | --- | --- |
-| ![Bag](docs/screenshots/bag.png) | ![Checkout](docs/screenshots/checkout.png) |
+| <img src="docs/screenshots/bag.png" alt="Bag" width="280" height="560" /> | <img src="docs/screenshots/checkout.png" alt="Checkout" width="280" height="560" /> |
 
 | Add Address | My Account |
 | --- | --- |
-| ![Add Address](docs/screenshots/add-address.png) | ![My Account](docs/screenshots/my-account.png) |
+| <img src="docs/screenshots/add-address.png" alt="Add Address" width="280" height="560" /> | <img src="docs/screenshots/my-account.png" alt="My Account" width="280" height="560" /> |
 
 ### Como agregar tus vistas
 
