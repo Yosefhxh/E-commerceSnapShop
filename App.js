@@ -211,6 +211,8 @@ export default function App() {
           onIncrease={addToCart}
           onDecrease={decreaseFromBag}
           onRemove={removeFromBag}
+          favoriteIds={favorites}
+          onToggleWishlist={toggleFavorite}
           onBack={() => {
             setActiveTab('home');
             setScreen('home');

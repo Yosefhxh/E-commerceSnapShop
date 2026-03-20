@@ -1,9 +1,11 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
+  Animated,
   Dimensions,
   FlatList,
   Image,
   Modal,
+  PanResponder,
   Pressable,
   SafeAreaView,
   StyleSheet,
@@ -23,6 +25,117 @@ const CARD_WIDTH = (width - H_PAD * 2 - CARD_GAP) / 2;
 const PRICE_MIN = 0;
 const PRICE_MAX = 300;
 const PRICE_STEP = 10;
+
+function SwipeAddProductCard({ item, isRight, favoriteIds, onToggleFavorite, onAddToCart, onOpenProduct }) {
+  const dragX = useRef(new Animated.Value(0)).current;
+  const lastTapRef = useRef(0);
+  const openTimeoutRef = useRef(null);
+
+  const resetCard = () => {
+    Animated.spring(dragX, {
+      toValue: 0,
+      useNativeDriver: true,
+      damping: 15,
+      stiffness: 220,
+    }).start();
+  };
+
+  const panResponder = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: (_, gesture) => (
+        gesture.dx > 8 && Math.abs(gesture.dx) > Math.abs(gesture.dy)
+      ),
+      onPanResponderMove: (_, gesture) => {
+        const next = Math.max(0, Math.min(100, gesture.dx));
+        dragX.setValue(next);
+      },
+      onPanResponderRelease: (_, gesture) => {
+        if (gesture.dx > 62) {
+          Animated.timing(dragX, {
+            toValue: 88,
+            duration: 110,
+            useNativeDriver: true,
+          }).start(() => {
+            onAddToCart(item.id);
+            resetCard();
+          });
+          return;
+        }
+        resetCard();
+      },
+      onPanResponderTerminate: resetCard,
+      onPanResponderTerminationRequest: () => false,
+    })
+  ).current;
+
+  const swipeHintOpacity = dragX.interpolate({
+    inputRange: [0, 55],
+    outputRange: [0, 1],
+    extrapolate: 'clamp',
+  });
+
+  const handleCardTap = () => {
+    const now = Date.now();
+    const isDoubleTap = now - lastTapRef.current < 280;
+
+    if (isDoubleTap) {
+      if (openTimeoutRef.current) {
+        clearTimeout(openTimeoutRef.current);
+        openTimeoutRef.current = null;
+      }
+      onToggleFavorite(item.id);
+      lastTapRef.current = 0;
+      return;
+    }
+
+    lastTapRef.current = now;
+    openTimeoutRef.current = setTimeout(() => {
+      onOpenProduct(item);
+      openTimeoutRef.current = null;
+    }, 280);
+  };
+
+  return (
+    <View style={[styles.cardWrap, isRight && { marginLeft: CARD_GAP }]}>
+      <Animated.View style={[styles.swipeAddHint, { opacity: swipeHintOpacity }]}>
+        <Ionicons name="bag-add" size={14} color="#FFFFFF" />
+        <Text style={styles.swipeAddHintText}>Add to Bag</Text>
+      </Animated.View>
+
+      <Animated.View
+        style={[styles.swipeCardContent, { transform: [{ translateX: dragX }] }]}
+        {...panResponder.panHandlers}
+      >
+        <Pressable style={styles.swipeCardPressable} onPress={handleCardTap}>
+          <Image source={{ uri: item.image }} style={styles.cardImage} resizeMode="cover" />
+
+          <View style={styles.cardShade} />
+
+          <Pressable style={styles.favBtn} onPress={() => onToggleFavorite(item.id)}>
+            <Ionicons
+              name={favoriteIds[item.id] ? 'heart' : 'heart-outline'}
+              size={16}
+              color="#FFFFFF"
+            />
+          </Pressable>
+
+          <View style={styles.cardOverlay}>
+            <View>
+              <Text style={styles.cardName}>{item.name}</Text>
+              <Text style={styles.cardPrice}>${item.price}</Text>
+            </View>
+            <Pressable
+              style={styles.addCartBtn}
+              onPress={() => onAddToCart(item.id)}
+            >
+              <Ionicons name="bag-handle-outline" size={15} color="#FFFFFF" />
+            </Pressable>
+          </View>
+        </Pressable>
+      </Animated.View>
+    </View>
+  );
+}
 
 export default function HomeScreen({
   selectedCategory = 'All',
@@ -88,37 +201,14 @@ export default function HomeScreen({
   const renderProduct = ({ item, index }) => {
     const isRight = index % 2 === 1;
     return (
-      <Pressable
-        style={[styles.cardWrap, isRight && { marginLeft: CARD_GAP }]}
-        onPress={() => onOpenProduct(item)}
-      >
-        <Image source={{ uri: item.image }} style={styles.cardImage} resizeMode="cover" />
-
-        <View style={styles.cardShade} />
-
-        {/* Favorite */}
-        <Pressable style={styles.favBtn} onPress={() => onToggleFavorite(item.id)}>
-          <Ionicons
-            name={favoriteIds[item.id] ? 'heart' : 'heart-outline'}
-            size={16}
-            color="#FFFFFF"
-          />
-        </Pressable>
-
-        {/* Bottom overlay */}
-        <View style={styles.cardOverlay}>
-          <View>
-            <Text style={styles.cardName}>{item.name}</Text>
-            <Text style={styles.cardPrice}>${item.price}</Text>
-          </View>
-          <Pressable
-            style={styles.addCartBtn}
-            onPress={() => onAddToCart(item.id)}
-          >
-            <Ionicons name="bag-handle-outline" size={15} color="#FFFFFF" />
-          </Pressable>
-        </View>
-      </Pressable>
+      <SwipeAddProductCard
+        item={item}
+        isRight={isRight}
+        favoriteIds={favoriteIds}
+        onToggleFavorite={onToggleFavorite}
+        onAddToCart={onAddToCart}
+        onOpenProduct={onOpenProduct}
+      />
     );
   };
 
@@ -372,6 +462,30 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     overflow: 'hidden',
     backgroundColor: '#F5F5F5',
+  },
+  swipeCardContent: {
+    flex: 1,
+  },
+  swipeCardPressable: {
+    flex: 1,
+  },
+  swipeAddHint: {
+    position: 'absolute',
+    left: 10,
+    top: 10,
+    zIndex: 2,
+    backgroundColor: '#0A0A0A',
+    borderRadius: 14,
+    height: 28,
+    paddingHorizontal: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+  },
+  swipeAddHintText: {
+    color: '#FFFFFF',
+    fontSize: 11,
+    fontWeight: '600',
   },
   cardImage: {
     width: '100%',

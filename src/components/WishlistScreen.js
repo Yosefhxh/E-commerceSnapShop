@@ -1,5 +1,76 @@
-import { FlatList, Image, Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { useRef } from 'react';
+import { Animated, FlatList, Image, PanResponder, Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+
+function SwipeRemoveWishlistItem({ item, onOpenProduct, onToggleFavorite }) {
+  const dragX = useRef(new Animated.Value(0)).current;
+
+  const reset = () => {
+    Animated.spring(dragX, {
+      toValue: 0,
+      useNativeDriver: true,
+      damping: 16,
+      stiffness: 230,
+    }).start();
+  };
+
+  const panResponder = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: (_, gesture) => (
+        Math.abs(gesture.dx) > 8 && Math.abs(gesture.dx) > Math.abs(gesture.dy)
+      ),
+      onPanResponderMove: (_, gesture) => {
+        const next = Math.max(-110, Math.min(0, gesture.dx));
+        dragX.setValue(next);
+      },
+      onPanResponderRelease: (_, gesture) => {
+        if (gesture.dx < -70) {
+          Animated.timing(dragX, {
+            toValue: -130,
+            duration: 120,
+            useNativeDriver: true,
+          }).start(() => {
+            onToggleFavorite(item.id);
+            dragX.setValue(0);
+          });
+          return;
+        }
+        reset();
+      },
+      onPanResponderTerminate: reset,
+      onPanResponderTerminationRequest: () => false,
+    })
+  ).current;
+
+  const removeHintOpacity = dragX.interpolate({
+    inputRange: [-90, 0],
+    outputRange: [1, 0],
+    extrapolate: 'clamp',
+  });
+
+  return (
+    <View style={styles.swipeRow}>
+      <Animated.View style={[styles.removeBg, { opacity: removeHintOpacity }]}>
+        <Ionicons name="trash-outline" size={16} color="#FFFFFF" />
+        <Text style={styles.removeText}>Remove</Text>
+      </Animated.View>
+
+      <Animated.View style={{ transform: [{ translateX: dragX }] }} {...panResponder.panHandlers}>
+        <Pressable style={styles.card} onPress={() => onOpenProduct(item)}>
+          <Image source={{ uri: item.image }} style={styles.thumb} />
+          <View style={styles.info}>
+            <Text style={styles.name}>{item.name}</Text>
+            <Text style={styles.category}>{item.category}</Text>
+            <Text style={styles.price}>${item.price}</Text>
+          </View>
+          <Pressable onPress={() => onToggleFavorite(item.id)} style={styles.heartBtn}>
+            <Ionicons name="heart" size={20} color="#0A0A0A" />
+          </Pressable>
+        </Pressable>
+      </Animated.View>
+    </View>
+  );
+}
 
 export default function WishlistScreen({ items, onOpenProduct, onToggleFavorite }) {
   return (
@@ -20,17 +91,11 @@ export default function WishlistScreen({ items, onOpenProduct, onToggleFavorite 
           keyExtractor={(item) => item.id}
           contentContainerStyle={styles.list}
           renderItem={({ item }) => (
-            <Pressable style={styles.card} onPress={() => onOpenProduct(item)}>
-              <Image source={{ uri: item.image }} style={styles.thumb} />
-              <View style={styles.info}>
-                <Text style={styles.name}>{item.name}</Text>
-                <Text style={styles.category}>{item.category}</Text>
-                <Text style={styles.price}>${item.price}</Text>
-              </View>
-              <Pressable onPress={() => onToggleFavorite(item.id)} style={styles.heartBtn}>
-                <Ionicons name="heart" size={20} color="#0A0A0A" />
-              </Pressable>
-            </Pressable>
+            <SwipeRemoveWishlistItem
+              item={item}
+              onOpenProduct={onOpenProduct}
+              onToggleFavorite={onToggleFavorite}
+            />
           )}
         />
       )}
@@ -46,6 +111,28 @@ const styles = StyleSheet.create({
   emptyTitle: { marginTop: 12, fontSize: 20, fontWeight: '700', color: '#0A0A0A' },
   emptyText: { marginTop: 8, fontSize: 14, textAlign: 'center', color: '#838383' },
   list: { padding: 20, paddingTop: 10, gap: 12 },
+  swipeRow: {
+    overflow: 'hidden',
+    borderRadius: 16,
+  },
+  removeBg: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    width: 126,
+    borderRadius: 16,
+    backgroundColor: '#D93B3B',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    gap: 6,
+  },
+  removeText: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontWeight: '700',
+  },
   card: {
     flexDirection: 'row',
     backgroundColor: '#FFFFFF',

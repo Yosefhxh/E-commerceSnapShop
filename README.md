@@ -15,6 +15,7 @@ E-CommerceStore incluye:
 - Direcciones con mapa y ubicacion
 - Flujo de orden exitosa
 - Modulo completo de **My Account** con subpantallas de configuracion
+- Interacciones por gestos (swipe y doble tap) en Home, Bag y Wishlist
 
 ## Galeria Visual (Portfolio)
 
@@ -124,6 +125,33 @@ E-CommerceStore/
 7. Add Address (map + location)
 8. Order Success
 9. My Account + subpantallas (details, payment, addresses, password, notifications, language, help, terms, contact)
+
+## Gestos E Interacciones
+
+La aplicacion implementa gestos para acelerar acciones de compra y gestion de favoritos.
+
+### Home
+
+- **Swipe derecha en producto**: agrega el item a la bolsa.
+- **Doble tap en producto**: agrega o quita el item de wishlist.
+- **Tap simple en producto**: abre Product Detail.
+
+### Bag
+
+- **Swipe izquierda en item**: elimina el item de la bolsa.
+- **Doble tap en item**: agrega o quita el item de wishlist.
+- **Botones +/-**: ajustan cantidad dentro de la bolsa.
+
+### Wishlist
+
+- **Swipe izquierda en item**: elimina el item de wishlist.
+- **Tap simple en item**: abre Product Detail.
+
+### Notas de UX
+
+- Los gestos estan pensados para evitar friccion en acciones frecuentes.
+- Se mantiene compatibilidad con interacciones tactiles clasicas (tap y botones).
+- El estado de favoritos y bolsa se sincroniza de forma global entre pantallas.
 
 ## Instalacion
 
