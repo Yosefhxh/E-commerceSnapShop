@@ -12,7 +12,12 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.E-CommerceStore",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "We use your location to set delivery address from your current position.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "We use your location to set delivery address from your current position."
+      }
     },
     "android": {
       "adaptiveIcon": {

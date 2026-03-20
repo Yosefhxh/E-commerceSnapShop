@@ -16,11 +16,53 @@ E-CommerceStore incluye:
 - Flujo de orden exitosa
 - Modulo completo de **My Account** con subpantallas de configuracion
 
-## Vistas De La Aplicacion
+## Galeria Visual (Portfolio)
 
-> Captura actual tomada desde el simulador iOS del proyecto.
+Esta galeria esta preparada para mostrar las vistas principales de la app con un formato tipo portafolio.
 
-![Vista actual de la app](docs/screenshots/app-current.png)
+### Preview actual
+
+![Preview actual](docs/screenshots/app-current.png)
+
+### Vistas principales
+
+| Home | Categories |
+| --- | --- |
+| ![Home](docs/screenshots/home.png) | ![Categories](docs/screenshots/categories.png) |
+
+| Product Detail | Wishlist |
+| --- | --- |
+| ![Product Detail](docs/screenshots/product-details.png) | ![Wishlist](docs/screenshots/wishlist.png) |
+
+| Bag | Checkout |
+| --- | --- |
+| ![Bag](docs/screenshots/bag.png) | ![Checkout](docs/screenshots/checkout.png) |
+
+| Add Address | My Account |
+| --- | --- |
+| ![Add Address](docs/screenshots/add-address.png) | ![My Account](docs/screenshots/my-account.png) |
+
+| Onboarding | Login |
+| --- | --- |
+| ![Onboarding](docs/screenshots/onboarding.png) | ![Login](docs/screenshots/login.png) |
+
+### Como agregar tus vistas
+
+1. Copia cada imagen a la carpeta docs/screenshots.
+2. Usa exactamente estos nombres de archivo para que la galeria funcione sin editar el README:
+
+- home.png
+- categories.png
+- product-details.png
+- wishlist.png
+- bag.png
+- checkout.png
+- add-address.png
+- my-account.png
+- onboarding.png
+- login.png
+
+3. Haz commit y push para que la galeria se vea en GitHub.
 
 ## Stack Y Herramientas
 
@@ -144,16 +186,15 @@ npx expo run:ios --no-build-cache
 - Si falla mapa/ubicacion: valida permisos en `app.json` y recompila app nativa.
 - Si hay conflicto de dependencias: elimina `node_modules` y ejecuta `npm install`.
 
-## Capturas Adicionales
+## Capturas Adicionales Opcionales
 
-Puedes agregar mas screenshots en:
+Si deseas ampliar la galeria, puedes agregar tambien:
 
-- `docs/screenshots/home.png`
-- `docs/screenshots/product-detail.png`
-- `docs/screenshots/my-account.png`
-- `docs/screenshots/checkout.png`
-
-Y luego referenciarlas en este README.
+- order-success.png
+- account-details.png
+- payment-method.png
+- delivery-address.png
+- notifications.png
 
 ## Autor
 
