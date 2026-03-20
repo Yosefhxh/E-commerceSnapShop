@@ -22,55 +22,58 @@ Esta galeria esta preparada para mostrar las vistas principales de la app con un
 
 ### Vistas principales
 
-<p align="center">
-  <img src="docs/screenshots/onboarding.png" alt="Onboarding" width="320" height="690" />
-</p>
-<p align="center"><strong>Onboarding</strong></p>
-
-<p align="center">
-  <img src="docs/screenshots/login.png" alt="Login" width="320" height="690" />
-</p>
-<p align="center"><strong>Login</strong></p>
-
-<p align="center">
-  <img src="docs/screenshots/home.png" alt="Home" width="320" height="690" />
-</p>
-<p align="center"><strong>Home</strong></p>
-
-<p align="center">
-  <img src="docs/screenshots/categories.png" alt="Categories" width="320" height="690" />
-</p>
-<p align="center"><strong>Categories</strong></p>
-
-<p align="center">
-  <img src="docs/screenshots/product-details.png" alt="Product Detail" width="320" height="690" />
-</p>
-<p align="center"><strong>Product Detail</strong></p>
-
-<p align="center">
-  <img src="docs/screenshots/wishlist.png" alt="Wishlist" width="320" height="690" />
-</p>
-<p align="center"><strong>Wishlist</strong></p>
-
-<p align="center">
-  <img src="docs/screenshots/bag.png" alt="Bag" width="320" height="690" />
-</p>
-<p align="center"><strong>Bag</strong></p>
-
-<p align="center">
-  <img src="docs/screenshots/checkout.png" alt="Checkout" width="320" height="690" />
-</p>
-<p align="center"><strong>Checkout</strong></p>
-
-<p align="center">
-  <img src="docs/screenshots/add-address.png" alt="Add Address" width="320" height="690" />
-</p>
-<p align="center"><strong>Add Address</strong></p>
-
-<p align="center">
-  <img src="docs/screenshots/my-account.png" alt="My Account" width="320" height="690" />
-</p>
-<p align="center"><strong>My Account</strong></p>
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="docs/screenshots/onboarding.png" alt="Onboarding" width="300" height="650" /><br />
+      <strong>Onboarding</strong>
+    </td>
+    <td align="center">
+      <img src="docs/screenshots/login.png" alt="Login" width="300" height="650" /><br />
+      <strong>Login</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="docs/screenshots/home.png" alt="Home" width="300" height="650" /><br />
+      <strong>Home</strong>
+    </td>
+    <td align="center">
+      <img src="docs/screenshots/categories.png" alt="Categories" width="300" height="650" /><br />
+      <strong>Categories</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="docs/screenshots/product-details.png" alt="Product Detail" width="300" height="650" /><br />
+      <strong>Product Detail</strong>
+    </td>
+    <td align="center">
+      <img src="docs/screenshots/wishlist.png" alt="Wishlist" width="300" height="650" /><br />
+      <strong>Wishlist</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="docs/screenshots/bag.png" alt="Bag" width="300" height="650" /><br />
+      <strong>Bag</strong>
+    </td>
+    <td align="center">
+      <img src="docs/screenshots/checkout.png" alt="Checkout" width="300" height="650" /><br />
+      <strong>Checkout</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="docs/screenshots/add-address.png" alt="Add Address" width="300" height="650" /><br />
+      <strong>Add Address</strong>
+    </td>
+    <td align="center">
+      <img src="docs/screenshots/my-account.png" alt="My Account" width="300" height="650" /><br />
+      <strong>My Account</strong>
+    </td>
+  </tr>
+</table>
 
 ### Como agregar tus vistas
 
