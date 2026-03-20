@@ -75,24 +75,6 @@ Esta galeria esta preparada para mostrar las vistas principales de la app con un
   </tr>
 </table>
 
-### Como agregar tus vistas
-
-1. Copia cada imagen a la carpeta docs/screenshots.
-2. Usa exactamente estos nombres de archivo para que la galeria funcione sin editar el README:
-
-- home.png
-- categories.png
-- product-details.png
-- wishlist.png
-- bag.png
-- checkout.png
-- add-address.png
-- my-account.png
-- onboarding.png
-- login.png
-
-3. Haz commit y push para que la galeria se vea en GitHub.
-
 ## Stack Y Herramientas
 
 ### Core
