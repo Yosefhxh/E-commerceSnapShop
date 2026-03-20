@@ -24,23 +24,23 @@ Esta galeria esta preparada para mostrar las vistas principales de la app con un
 
 | Onboarding | Login |
 | --- | --- |
-| <img src="docs/screenshots/onboarding.png" alt="Onboarding" width="280" height="560" /> | <img src="docs/screenshots/login.png" alt="Login" width="280" height="560" /> |
+| <img src="docs/screenshots/onboarding.png" alt="Onboarding" width="340" height="740" /> | <img src="docs/screenshots/login.png" alt="Login" width="340" height="740" /> |
 
 | Home | Categories |
 | --- | --- |
-| <img src="docs/screenshots/home.png" alt="Home" width="280" height="560" /> | <img src="docs/screenshots/categories.png" alt="Categories" width="280" height="560" /> |
+| <img src="docs/screenshots/home.png" alt="Home" width="340" height="740" /> | <img src="docs/screenshots/categories.png" alt="Categories" width="340" height="740" /> |
 
 | Product Detail | Wishlist |
 | --- | --- |
-| <img src="docs/screenshots/product-details.png" alt="Product Detail" width="280" height="560" /> | <img src="docs/screenshots/wishlist.png" alt="Wishlist" width="280" height="560" /> |
+| <img src="docs/screenshots/product-details.png" alt="Product Detail" width="340" height="740" /> | <img src="docs/screenshots/wishlist.png" alt="Wishlist" width="340" height="740" /> |
 
 | Bag | Checkout |
 | --- | --- |
-| <img src="docs/screenshots/bag.png" alt="Bag" width="280" height="560" /> | <img src="docs/screenshots/checkout.png" alt="Checkout" width="280" height="560" /> |
+| <img src="docs/screenshots/bag.png" alt="Bag" width="340" height="740" /> | <img src="docs/screenshots/checkout.png" alt="Checkout" width="340" height="740" /> |
 
 | Add Address | My Account |
 | --- | --- |
-| <img src="docs/screenshots/add-address.png" alt="Add Address" width="280" height="560" /> | <img src="docs/screenshots/my-account.png" alt="My Account" width="280" height="560" /> |
+| <img src="docs/screenshots/add-address.png" alt="Add Address" width="340" height="740" /> | <img src="docs/screenshots/my-account.png" alt="My Account" width="340" height="740" /> |
 
 ### Como agregar tus vistas
 
